@@ -1,0 +1,33 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 24px 64px;
+  background-color: var(--inputs);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  margin-right: 450px;
+}
+
+.navLink {
+  font-weight: 500;
+  &:hover {
+    color: var(--grey-green);
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+}
+
+.navItem {
+  line-height: 1.5;
+}

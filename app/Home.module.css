@@ -1,0 +1,26 @@
+.section {
+  padding: 267px 64px 325px;
+  max-width: 1440px;
+  margin: 0 auto;
+
+  color: var(--inputs);
+  background: url("/home.jpg") no-repeat center/cover;
+
+  @media screen and (min-resolution: 2x) {
+    background: url("/home@2x.jpg") no-repeat center/cover;
+  }
+}
+
+.title {
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 0.66667;
+  margin-bottom: 16px;
+}
+
+.description {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  margin-bottom: 40px;
+}
