@@ -5,14 +5,6 @@ import {
   CamperTransmission,
 } from "./camperCharacteristics";
 
-export interface CamperList {
-  page: number;
-  perPage: number;
-  total: number;
-  totalPages: number;
-  campers: Camper[];
-}
-
 export interface Camper {
   id: string;
   name: string;

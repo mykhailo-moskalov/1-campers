@@ -4,8 +4,9 @@ import {
   CamperTransmission,
 } from "./camperCharacteristics";
 
-export interface Filter {
-  forms: CamperForm;
-  transmissions: CamperTransmission;
-  engines: CamperEngine;
+export interface CamperFilters {
+  location?: string;
+  forms?: CamperForm;
+  transmissions?: CamperTransmission;
+  engines?: CamperEngine;
 }
