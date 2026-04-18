@@ -5,6 +5,7 @@
 
 .green {
   padding: 16px 60px;
+  color: var(--white);
   background-color: var(--grey-green);
   &:hover {
     background-color: var(--green-hover);

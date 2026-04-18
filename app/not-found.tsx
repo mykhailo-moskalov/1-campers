@@ -1,3 +1,4 @@
+import Container from "@/components/Container/Container";
 import css from "./Home.module.css";
 import { Metadata } from "next";
 import ClientRedirect from "./NotFound.client";
@@ -29,16 +30,17 @@ export const metadata: Metadata = {
 
 const NotFound = () => {
   return (
-    <>
+    <Container className={`${css.container} ${css.nFContainer}`}>
       <h1 className={css.title}>404 - Page not found</h1>
-      <p className={css.description}>
+      <p className={css.subtitle}>
         Sorry, the page you are looking for does not exist.
-        <br />
-        <br />
+      </p>
+      <p className={css.subtitle}>
         You will be redirected to the homepage in a while
       </p>
+
       <ClientRedirect />
-    </>
+    </Container>
   );
 };
 

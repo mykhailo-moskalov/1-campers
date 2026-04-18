@@ -3,7 +3,7 @@ import css from "./Button.module.css";
 
 interface BtnProps {
   variant?: "green" | "transparent";
-  className: string;
+  className?: string;
   children: React.ReactNode;
 }
 
