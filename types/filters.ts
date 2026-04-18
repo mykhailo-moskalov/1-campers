@@ -6,7 +6,7 @@ import {
 
 export interface CamperFilters {
   location?: string;
-  forms?: CamperForm;
-  transmissions?: CamperTransmission;
-  engines?: CamperEngine;
+  form?: CamperForm;
+  transmission?: CamperTransmission;
+  engine?: CamperEngine;
 }

@@ -1,20 +1,20 @@
 export enum CamperForm {
-  CamperForm,
-  "panel_van",
-  "integrated",
-  "semi_integrated",
+  Alcove = "alcove",
+  PanelVan = "panel_van",
+  Integrated = "integrated",
+  SemiIntegrated = "semi_integrated",
 }
 
 export enum CamperTransmission {
-  "automatic",
-  "manual",
+  Automatic = "automatic",
+  Manual = "manual",
 }
 
 export enum CamperEngine {
-  "diesel",
-  "petrol",
-  "hybrid",
-  "electric",
+  Diesel = "diesel",
+  Petrol = "petrol",
+  Hybrid = "hybrid",
+  Electric = "electric",
 }
 
 export enum CamperAmenities {

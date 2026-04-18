@@ -1,0 +1,133 @@
+.sidebar {
+  padding: 24px;
+  background-color: var(--inputs);
+  border-radius: 20px;
+  width: 360px;
+}
+
+.locationGroup {
+  margin-bottom: 40px;
+}
+
+.label {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  color: var(--gray);
+  &:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  &:not(:first-child) {
+    margin-bottom: 8px;
+  }
+  &:focus-within .map {
+    color: var(--main);
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 16px 20px 16px 48px;
+  border-radius: 12px;
+  background-color: var(--white);
+  border: none;
+  outline: none;
+  &::placeholder {
+    transition: inherit;
+    color: var(--gray);
+  }
+  &:focus {
+    &::placeholder {
+      color: transparent;
+    }
+  }
+}
+
+.map {
+  width: 20px;
+  height: 20px;
+  color: inherit;
+  position: absolute;
+  top: 40px;
+  left: 20px;
+}
+
+.filtersTitle {
+  margin-bottom: 24px;
+}
+
+.fieldset {
+  border: none;
+  &:not(:last-child) {
+    margin-bottom: 24px;
+  }
+}
+
+.fieldsetLegend {
+  font-size: 13px;
+  color: var(--gray);
+  margin-bottom: 4px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+}
+
+.radio {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--text);
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gray-green);
+    transition: transform 0.2s;
+  }
+
+  &:checked {
+    border-color: var(--gray-green);
+
+    &::after {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}
+
+.btns {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.btnClear {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  & svg {
+    height: 24px;
+    width: 24px;
+  }
+}

@@ -5,11 +5,15 @@ interface BtnProps {
   variant?: "green" | "transparent";
   className?: string;
   children: React.ReactNode;
+  onClick?: () => void;
 }
 
-const Btn = ({ variant = "green", className, children }: BtnProps) => {
+const Btn = ({ variant = "green", className, children, onClick }: BtnProps) => {
   return (
-    <button className={clsx(css.btn, css[variant], className)}>
+    <button
+      className={clsx(css.btn, css[variant], className)}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

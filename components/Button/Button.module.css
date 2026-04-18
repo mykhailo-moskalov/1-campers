@@ -1,4 +1,5 @@
 .btn {
+  display: inline-block;
   font-weight: 500;
   border-radius: 200px;
 }
@@ -6,7 +7,7 @@
 .green {
   padding: 16px 60px;
   color: var(--white);
-  background-color: var(--grey-green);
+  background-color: var(--gray-green);
   &:hover {
     background-color: var(--green-hover);
   }
@@ -15,6 +16,7 @@
 .transparent {
   padding: 16px 32px;
   border: 1px solid;
+  background-color: var(--white);
   border-color: var(--gray-light);
   &:hover {
     border-color: var(--green-hover);

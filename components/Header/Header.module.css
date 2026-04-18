@@ -19,7 +19,7 @@
 .navLink {
   font-weight: 500;
   &:hover {
-    color: var(--grey-green);
+    color: var(--gray-green);
   }
 }
 
