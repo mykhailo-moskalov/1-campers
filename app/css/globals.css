@@ -23,4 +23,5 @@ body {
   background-color: var(--white);
   color: var(--main);
   line-height: 1.5;
+  min-height: 60vh;
 }

@@ -1,36 +1,34 @@
+import { Metadata } from "next";
 import {
   dehydrate,
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query";
+import { fetchCamperById } from "@/lib/api/clientApi";
+import CamperDetailsClient from "./CamperDetails.client";
 
-import { fetchCamperById } from "@/lib/api/serverApi";
-
-import NoteDetailsClient from "./NoteDetails.client";
-import { Metadata } from "next";
-
-type NoteDetailsProps = {
+type CamperDetailsProps = {
   params: Promise<{ id: string }>;
 };
 
 export async function generateMetadata({
   params,
-}: NoteDetailsProps): Promise<Metadata> {
+}: CamperDetailsProps): Promise<Metadata> {
   const { id } = await params;
 
-  const note = await fetchNoteById(id);
+  const camper = await fetchCamperById(id);
 
   return {
-    title: `Note: ${note.title}`,
-    description: `${note.content.slice(0, 32)}...`,
+    title: `Camper: ${camper.name}`,
+    description: `${camper.description?.slice(0, 32)}...`,
     openGraph: {
-      title: `Note: ${note.title}`,
-      description: `${note.content.slice(0, 96)}...`,
-      url: `https://08-zustand-eight-pi.vercel.app/notes/${id}`,
-      siteName: "NoteHub",
+      title: `Note: ${camper.name}`,
+      description: `${camper.description?.slice(0, 96)}...`,
+      url: `/campers/${id}`, // !!!
+      siteName: "TravelTrucks",
       images: [
         {
-          url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+          url: "/home.jpg", // !!!
           width: 1200,
           height: 630,
           alt: "Notehub",
@@ -40,27 +38,27 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `Note: ${note.title}`,
-      description: `${note.content.slice(0, 16)}...`,
-      images: ["https://ac.goit.global/fullstack/react/notehub-og-meta.jpg"],
+      title: `Camper: ${camper.name}`,
+      description: `${camper.description?.slice(0, 16)}...`,
+      images: ["/home.jpg"], // !!!
     },
   };
 }
 
-const NoteDetails = async ({ params }: NoteDetailsProps) => {
+const CamperDetails = async ({ params }: CamperDetailsProps) => {
   const { id } = await params;
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ["note", id],
-    queryFn: () => fetchNoteById(id),
+    queryKey: ["camper", id],
+    queryFn: () => fetchCamperById(id),
   });
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NoteDetailsClient />
+      <CamperDetailsClient />
     </HydrationBoundary>
   );
 };
 
-export default NoteDetails;
+export default CamperDetails;

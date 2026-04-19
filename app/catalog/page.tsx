@@ -9,7 +9,7 @@ import CampersList from "@/components/CampersList/CampersList";
 import Btn from "@/components/Button/Button";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { fetchCampers } from "@/lib/api/clientApi";
-import Loader from "../loading";
+import Loader from "@/components/Loader/Loader";
 
 const Catalog = () => {
   const [filters, setFilters] = useState<CamperFilters>({});

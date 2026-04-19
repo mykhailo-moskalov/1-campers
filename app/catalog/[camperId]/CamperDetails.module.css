@@ -1,0 +1,30 @@
+.name {
+  margin-bottom: 8px;
+}
+
+.stats {
+  margin-bottom: 16px;
+  display: flex;
+  gap: 16px;
+  & .stat {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    & .icon {
+      width: 16px;
+      height: 16px;
+      height: 16px;
+      &.star {
+        color: var(--rating);
+      }
+    }
+  }
+}
+
+.price {
+  margin-bottom: 24px;
+}
+
+.descr {
+  color: var(--text);
+}
