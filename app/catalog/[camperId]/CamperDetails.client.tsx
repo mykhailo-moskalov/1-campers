@@ -19,7 +19,7 @@ import clsx from "clsx";
 import { IoMapOutline, IoStar } from "react-icons/io5";
 
 const CamperDetailsClient = () => {
-  const { id } = useParams<{ id: string }>();
+  const { camperId } = useParams<{ camperId: string }>();
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const swiperRef = useRef<SwiperType | null>(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -30,8 +30,8 @@ const CamperDetailsClient = () => {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["camper", id],
-    queryFn: () => fetchCamperById(id),
+    queryKey: ["camper", camperId],
+    queryFn: () => fetchCamperById(camperId),
   });
 
   if (isLoading) return <Loader />;

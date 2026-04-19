@@ -8,15 +8,15 @@ import { fetchCamperById } from "@/lib/api/clientApi";
 import CamperDetailsClient from "./CamperDetails.client";
 
 type CamperDetailsProps = {
-  params: Promise<{ id: string }>;
+  params: Promise<{ camperId: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: CamperDetailsProps): Promise<Metadata> {
-  const { id } = await params;
+  const { camperId } = await params;
 
-  const camper = await fetchCamperById(id);
+  const camper = await fetchCamperById(camperId);
 
   return {
     title: `Camper: ${camper.name}`,
@@ -24,7 +24,7 @@ export async function generateMetadata({
     openGraph: {
       title: `Note: ${camper.name}`,
       description: `${camper.description?.slice(0, 96)}...`,
-      url: `/campers/${id}`, // !!!
+      url: `/campers/${camperId}`, // !!!
       siteName: "TravelTrucks",
       images: [
         {
@@ -46,12 +46,12 @@ export async function generateMetadata({
 }
 
 const CamperDetails = async ({ params }: CamperDetailsProps) => {
-  const { id } = await params;
+  const { camperId } = await params;
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ["camper", id],
-    queryFn: () => fetchCamperById(id),
+    queryKey: ["camper", camperId],
+    queryFn: () => fetchCamperById(camperId),
   });
 
   return (
