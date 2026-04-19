@@ -16,15 +16,3 @@ export enum CamperEngine {
   Hybrid = "hybrid",
   Electric = "electric",
 }
-
-export enum CamperAmenities {
-  "ac",
-  "bathroom",
-  "kitchen",
-  "tv",
-  "radio",
-  "refrigerator",
-  "microwave",
-  "gas",
-  "water",
-}

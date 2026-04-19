@@ -13,6 +13,7 @@ interface BadgesListProps {
   engine: string;
   transmission: string;
   form: string;
+  amenities?: string[];
   className?: string;
 }
 
@@ -32,6 +33,7 @@ const BadgesList = ({
   engine,
   transmission,
   form,
+  amenities,
   className,
 }: BadgesListProps) => {
   const formatLabel = (value: string) =>
@@ -50,6 +52,12 @@ const BadgesList = ({
         <PiVanFill className={clsx(css.icon, css.carIcon)} />
         {formatLabel(form)}
       </li>
+      {amenities &&
+        amenities.map((a) => (
+          <li key={a} className={css.badgesItem}>
+            {a}
+          </li>
+        ))}
     </ul>
   );
 };

@@ -1,3 +1,44 @@
+.detailsLayout {
+  padding: 120px 0 52px;
+}
+
+.topDiv {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 88px;
+}
+
+.gallery {
+  width: 638px;
+}
+
+.swiper {
+  margin-bottom: 4px;
+  border-radius: 16px;
+  & img {
+    height: 569.45px;
+  }
+}
+
+.hint {
+  font-size: 14px;
+  margin-bottom: 4px;
+  padding-left: 16px;
+  color: var(--text);
+}
+
+.descrBlock,
+.detailsBlock {
+  border-radius: 16px;
+  background-color: var(--inputs);
+  padding: 24px;
+  max-width: 650px;
+}
+
+.descrBlock {
+  margin-bottom: 16px;
+}
+
 .name {
   margin-bottom: 8px;
 }
@@ -27,4 +68,28 @@
 
 .descr {
   color: var(--text);
+}
+
+.detailsBlockTitle {
+  margin-bottom: 16px;
+}
+
+.badges {
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--gray-light);
+  margin: 16px 0;
+}
+
+.detailsListItem {
+  text-transform: capitalize;
+  display: flex;
+  justify-content: space-between;
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
 }
