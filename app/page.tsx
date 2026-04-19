@@ -1,7 +1,6 @@
 import Container from "@/components/Container/Container";
 import css from "./Home.module.css";
 import Btn from "@/components/Button/Button";
-import Link from "next/link";
 
 export default function Home() {
   return (
@@ -11,9 +10,9 @@ export default function Home() {
         <p className={css.subtitle}>
           You can find everything you want in our catalog
         </p>
-        <Link href="/catalog">
-          <Btn>View Now</Btn>
-        </Link>
+        <Btn variant="link" href="/catalog">
+          View Now
+        </Btn>
       </Container>
     </section>
   );

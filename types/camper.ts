@@ -23,12 +23,12 @@ export interface Camper {
   engine: CamperEngine;
   amenities: CamperAmenities;
   coverImage?: string; // ? ListItem
-  gallery?: CamperImage;
+  gallery?: CamperImageGallery[];
   createdAt?: string; // ? Details
   updatedAt?: string; // ? Details
 }
 
-export interface CamperImage {
+export interface CamperImageGallery {
   id: string;
   camperId: string;
   thumb: string;

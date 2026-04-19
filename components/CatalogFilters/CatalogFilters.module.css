@@ -3,6 +3,10 @@
   background-color: var(--inputs);
   border-radius: 20px;
   width: 360px;
+  max-height: fit-content;
+  position: fixed;
+  top: 120px;
+  left: 64px;
 }
 
 .locationGroup {
@@ -51,7 +55,7 @@
   height: 20px;
   color: inherit;
   position: absolute;
-  top: 40px;
+  top: 50px;
   left: 20px;
 }
 

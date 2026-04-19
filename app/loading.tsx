@@ -1,8 +1,18 @@
 import { RingLoader } from "react-spinners";
 import css from "./Home.module.css";
+import clsx from "clsx";
 
-const Loader = () => (
-  <RingLoader size="50px" color="#0d6efd" className={css.loader} />
+interface LoaderProps {
+  className?: string;
+  size?: number;
+}
+
+const Loader = ({ className, size = 64 }: LoaderProps) => (
+  <RingLoader
+    size={size}
+    color="var(--gray-green)"
+    className={clsx(css.loader, className)}
+  />
 );
 
 export default Loader;

@@ -22,4 +22,5 @@ body {
   font-family: var(--font-inter), sans-serif;
   background-color: var(--white);
   color: var(--main);
+  line-height: 1.5;
 }

@@ -1,3 +1,22 @@
-.page {
-  padding-top: 120px;
+.catalogLayout {
+  padding: 120px 0 52px;
+  display: flex;
+  justify-content: end;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  min-height: 60vh;
+  min-width: 888px;
+}
+
+.loader {
+  top: 50%;
+  transform: translateY(-50%);
+  &:last-child {
+    max-height: 24px;
+  }
 }

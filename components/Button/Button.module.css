@@ -4,8 +4,11 @@
   border-radius: 200px;
 }
 
-.green {
-  padding: 16px 60px;
+.green,
+.link {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
   color: var(--white);
   background-color: var(--gray-green);
   &:hover {
@@ -13,8 +16,15 @@
   }
 }
 
+.link {
+  width: 173px;
+}
+
 .transparent {
   padding: 16px 32px;
+  min-width: 145px;
+  display: flex;
+  justify-content: center;
   border: 1px solid;
   background-color: var(--white);
   border-color: var(--gray-light);

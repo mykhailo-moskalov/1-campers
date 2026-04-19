@@ -1,0 +1,53 @@
+.card {
+  border-radius: 16px;
+  padding: 24px;
+  background-color: var(--inputs);
+  display: flex;
+  gap: 24px;
+  max-width: 888px;
+}
+
+.img {
+  border-radius: 16px;
+  object-fit: cover;
+  height: 240px;
+}
+
+.mainStats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.stats {
+  margin-bottom: 24px;
+  display: flex;
+  gap: 16px;
+  & .stat {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    & .icon {
+      width: 16px;
+      height: 16px;
+      height: 16px;
+      &.star {
+        color: var(--rating);
+      }
+    }
+  }
+}
+
+.descr {
+  margin-bottom: 24px;
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.badges {
+  margin-bottom: 24px;
+}

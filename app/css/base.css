@@ -2,7 +2,8 @@
   transition: all 0.15s ease-in-out;
 }
 
-h2 {
+h2,
+.h2 {
   font-weight: 600;
   font-size: 24px;
   line-height: 1.33333;
@@ -19,6 +20,11 @@ a {
   &:focus-visible {
     outline: none !important;
   }
+}
+
+button,
+input {
+  line-height: inherit !important;
 }
 
 svg {
