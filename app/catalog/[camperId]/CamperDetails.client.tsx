@@ -18,7 +18,6 @@ import "swiper/css/bundle";
 import Lightbox from "yet-another-react-lightbox";
 import { Zoom } from "yet-another-react-lightbox/plugins";
 import "yet-another-react-lightbox/styles.css";
-import Image from "next/image";
 import clsx from "clsx";
 import { IoMapOutline, IoStar } from "react-icons/io5";
 import BadgesList from "@/components/BadgesList/BadgesList";
@@ -27,6 +26,7 @@ import { Booking, BookingResponse } from "@/types/booking";
 import toast from "react-hot-toast";
 import Btn from "@/components/Button/Button";
 import StarRating from "@/components/StarRating/StarRating";
+import GalleryImage from "@/components/GalleryImage/GalleryImage";
 
 const CamperDetailsClient = () => {
   const { camperId } = useParams<{ camperId: string }>();
@@ -111,12 +111,11 @@ const CamperDetailsClient = () => {
                       setLightboxOpen(true);
                     }}
                   >
-                    <Image
+                    <GalleryImage
                       width={638}
                       height={505}
                       alt={camper.name}
-                      src={img.original || "/placeholder.png"}
-                      loading="lazy"
+                      src={img.original}
                     />
                   </SwiperSlide>
                 ))}
@@ -132,12 +131,11 @@ const CamperDetailsClient = () => {
               >
                 {camper.gallery?.map((img) => (
                   <SwiperSlide key={img.id} className={css.swiperSlide}>
-                    <Image
+                    <GalleryImage
                       width={136}
                       height={144}
                       alt={camper.name}
-                      src={img.thumb || "/placeholder.png"}
-                      loading="lazy"
+                      src={img.thumb}
                     />
                   </SwiperSlide>
                 ))}

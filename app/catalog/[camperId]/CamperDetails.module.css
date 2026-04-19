@@ -20,6 +20,12 @@
   }
 }
 
+.swiperThumbs {
+  & img {
+    height: 135.5px;
+  }
+}
+
 .hint {
   font-size: 14px;
   margin-bottom: 4px;

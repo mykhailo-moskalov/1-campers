@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import Image from "next/image";
 import { IoMapOutline, IoStar } from "react-icons/io5";
@@ -5,21 +7,27 @@ import css from "./CampersListItem.module.css";
 import { Camper } from "@/types/camper";
 import BadgesList from "../BadgesList/BadgesList";
 import Btn from "../Button/Button";
+import { isValidUrl } from "@/lib/utils";
+import { useState } from "react";
 
 interface CampersListItemProps {
   c: Camper;
 }
 
 const CampersListItem = ({ c }: CampersListItemProps) => {
+  const [imgSrc, setImgSrc] = useState(
+    isValidUrl(c.coverImage) ? c.coverImage! : "/placeholder.png",
+  );
   return (
     <div className={css.card}>
       <Image
-        src={c.coverImage || c.gallery?.[0]?.thumb || "/placeholder.png"}
+        src={imgSrc}
         alt={c.name}
         width={219}
         height={240}
         loading="lazy"
         className={css.img}
+        onError={() => setImgSrc("/placeholder.png")}
       />
       <div className={css.info}>
         <div className={css.mainStats}>
