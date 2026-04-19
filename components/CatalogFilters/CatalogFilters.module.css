@@ -4,9 +4,6 @@
   border-radius: 20px;
   width: 360px;
   max-height: fit-content;
-  position: fixed;
-  top: 120px;
-  left: 64px;
 }
 
 .locationGroup {
