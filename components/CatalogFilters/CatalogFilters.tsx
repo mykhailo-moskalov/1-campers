@@ -43,12 +43,6 @@ export const CatalogFilters = ({ onSearch }: CatalogFiltersProps) => {
   >();
 
   const handleSearch = () => {
-    console.log("filters:", {
-      ...(location && { location }),
-      form,
-      engine,
-      transmission,
-    });
     onSearch({ ...(location && { location }), form, engine, transmission });
   };
 
