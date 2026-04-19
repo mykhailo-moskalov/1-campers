@@ -1,5 +1,4 @@
 import {
-  CamperAmenities,
   CamperEngine,
   CamperForm,
   CamperTransmission,
@@ -21,7 +20,7 @@ export interface Camper {
   consumption: string;
   transmission: CamperTransmission;
   engine: CamperEngine;
-  amenities: CamperAmenities;
+  amenities: string[];
   coverImage?: string; // ? ListItem
   gallery?: CamperImageGallery[];
   createdAt?: string; // ? Details
