@@ -6,6 +6,7 @@ interface BtnProps {
   variant?: "green" | "transparent" | "link";
   href?: string;
   target?: "_blank" | "_parent" | "_top" | "_self";
+  type?: "button" | "submit" | "reset";
   className?: string;
   children: React.ReactNode;
   onClick?: () => void;
@@ -15,6 +16,7 @@ const Btn = ({
   variant = "green",
   href,
   target,
+  type = "button",
   className,
   children,
   onClick,
@@ -32,6 +34,7 @@ const Btn = ({
   }
   return (
     <button
+      type={type}
       className={clsx(css.btn, css[variant], className)}
       onClick={onClick}
     >

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./css/globals.css";
 import Header from "@/components/Header/Header";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
   weight: ["400", "500", "600"],
@@ -47,6 +48,7 @@ export default function RootLayout({
         <TanStackProvider>
           <Header />
           {children}
+          <Toaster position="top-right" />
         </TanStackProvider>
       </body>
     </html>

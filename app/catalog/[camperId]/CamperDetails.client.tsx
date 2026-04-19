@@ -1,9 +1,13 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { useRef, useState } from "react";
-import { fetchCamperById } from "@/lib/api/clientApi";
+import {
+  fetchCamperById,
+  fetchCamperReviews,
+  sendBookingRequest,
+} from "@/lib/api/clientApi";
 import css from "./CamperDetails.module.css";
 import Container from "@/components/Container/Container";
 import Loader from "@/components/Loader/Loader";
@@ -18,6 +22,11 @@ import Image from "next/image";
 import clsx from "clsx";
 import { IoMapOutline, IoStar } from "react-icons/io5";
 import BadgesList from "@/components/BadgesList/BadgesList";
+import { useBookingDraftStore } from "@/lib/store/bookingStore";
+import { Booking, BookingResponse } from "@/types/booking";
+import toast from "react-hot-toast";
+import Btn from "@/components/Button/Button";
+import StarRating from "@/components/StarRating/StarRating";
 
 const CamperDetailsClient = () => {
   const { camperId } = useParams<{ camperId: string }>();
@@ -25,6 +34,37 @@ const CamperDetailsClient = () => {
   const swiperRef = useRef<SwiperType | null>(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const { draft, setDraft, clearDraft } = useBookingDraftStore();
+
+  const { mutate } = useMutation({
+    mutationFn: (book: Booking) => sendBookingRequest(camperId, book),
+    onSuccess: (data: BookingResponse) => {
+      toast.success(data.message, {
+        duration: 4000,
+      });
+      clearDraft();
+    },
+    onError: () =>
+      toast.error("Failed to send booking.", {
+        duration: 4000,
+      }),
+  });
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDraft({
+      ...draft,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = (formData: FormData) => {
+    const rawValues = Object.fromEntries(formData.entries());
+    const values: Booking = {
+      name: String(rawValues.name || ""),
+      email: String(rawValues.email || ""),
+    };
+    mutate(values);
+  };
 
   const {
     data: camper,
@@ -33,6 +73,11 @@ const CamperDetailsClient = () => {
   } = useQuery({
     queryKey: ["camper", camperId],
     queryFn: () => fetchCamperById(camperId),
+  });
+
+  const { data: reviews } = useQuery({
+    queryKey: ["reviews", camperId],
+    queryFn: () => fetchCamperReviews(camperId),
   });
 
   const formatLabel = (value: string) =>
@@ -163,8 +208,53 @@ const CamperDetailsClient = () => {
 
           <div className={css.bottomDiv}>
             <h2 className={css.reviewsTitle}>Reviews</h2>
-            <div className={css.reviews}></div>
-            <div className={css.booking}></div>
+            <div>
+              <ul className={css.reviewsList}>
+                {reviews?.map((r) => (
+                  <li key={r.id} className={css.reviewItem}>
+                    <div className={css.userDiv}>
+                      <p className={clsx("h2", css.avatar)}>
+                        {r.reviewer_name.slice(0, 1)}
+                      </p>
+                      <div className={css.nameDiv}>
+                        <p className={css.reviewerName}>{r.reviewer_name}</p>
+                        <StarRating rating={r.reviewer_rating} />
+                      </div>
+                    </div>
+                    <p className={css.reviewComment}>{r.comment}</p>
+                  </li>
+                ))}
+              </ul>
+              <form action={handleSubmit} className={css.form}>
+                <h3 className={css.formTitle}>Book your campervan now</h3>
+                <p className={css.formSubtitle}>
+                  Stay connected! We are always ready to help you.
+                </p>
+                <div className={css.inputsWrap}>
+                  <input
+                    id="name"
+                    type="text"
+                    name="name"
+                    placeholder="Name*"
+                    className={css.input}
+                    defaultValue={draft?.name}
+                    onChange={handleChange}
+                    required
+                  />
+                  <input
+                    id="email"
+                    type="text"
+                    name="email"
+                    placeholder="Email*"
+                    className={css.input}
+                    defaultValue={draft?.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <Btn type="submit">Send</Btn>
+              </form>
+            </div>
           </div>
         </div>
       </Container>

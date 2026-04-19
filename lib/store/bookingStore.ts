@@ -13,7 +13,7 @@ const initialDraft: Booking = {
   email: "",
 };
 
-export const useBookingStore = create<BookingDraftStore>()(
+export const useBookingDraftStore = create<BookingDraftStore>()(
   persist(
     (set) => ({
       draft: initialDraft,

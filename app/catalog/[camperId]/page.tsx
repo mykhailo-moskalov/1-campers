@@ -4,7 +4,7 @@ import {
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query";
-import { fetchCamperById } from "@/lib/api/clientApi";
+import { fetchCamperById, fetchCamperReviews } from "@/lib/api/clientApi";
 import CamperDetailsClient from "./CamperDetails.client";
 
 type CamperDetailsProps = {
@@ -49,10 +49,16 @@ const CamperDetails = async ({ params }: CamperDetailsProps) => {
   const { camperId } = await params;
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery({
-    queryKey: ["camper", camperId],
-    queryFn: () => fetchCamperById(camperId),
-  });
+  await Promise.all([
+    queryClient.prefetchQuery({
+      queryKey: ["camper", camperId],
+      queryFn: () => fetchCamperById(camperId),
+    }),
+    queryClient.prefetchQuery({
+      queryKey: ["reviews", camperId],
+      queryFn: () => fetchCamperReviews(camperId),
+    }),
+  ]);
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

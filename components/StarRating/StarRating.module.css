@@ -1,0 +1,12 @@
+.stars {
+  display: flex;
+  gap: 4px;
+}
+
+.filled {
+  color: var(--rating);
+}
+
+.empty {
+  color: var(--gray-light);
+}
